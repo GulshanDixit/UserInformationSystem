@@ -1,6 +1,7 @@
 package com.user.information.system.controller;
 
 import com.user.information.system.model.User;
+import com.user.information.system.pojos.HealthStatus;
 import com.user.information.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,11 @@ public class UserRestController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/check/health")
+    public HealthStatus getHealthStatus() {
+        HealthStatus healthStatus = new HealthStatus(200, "test api working successfully");
+        return healthStatus;
+    }
     @GetMapping("/")
     public List<User> getAllUsers()
     {

@@ -1,4 +1,4 @@
-package com.user.information.system.userinformationsystem;
+package com.user.information.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

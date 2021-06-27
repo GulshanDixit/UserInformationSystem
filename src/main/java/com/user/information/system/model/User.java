@@ -3,7 +3,9 @@ package com.user.information.system.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "users")
+import java.util.List;
+
+@Document(collection = "users")
 public class User {
 
     @Id
@@ -12,15 +14,17 @@ public class User {
     private long userNumber;
     private String email;
     private float rating;
+    private List<String> courseList;
 
     public User() {
     }
 
-    public User(String name, long userNumber, String email, float rating) {
+    public User(String name, long userNumber, String email, float rating, List<String> courseList) {
         this.name = name;
         this.userNumber = userNumber;
         this.email = email;
         this.rating = rating;
+        this.courseList = courseList;
     }
 
     public String getId() {
@@ -63,6 +67,14 @@ public class User {
         this.rating = rating;
     }
 
+    public List<String> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<String> courseList) {
+        this.courseList = courseList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -70,7 +82,8 @@ public class User {
                 ", name='" + name + '\'' +
                 ", userNumber=" + userNumber +
                 ", email='" + email + '\'' +
-                ", gpa=" + rating +
+                ", rating=" + rating +
+                ", courseList=" + courseList +
                 '}';
     }
 }

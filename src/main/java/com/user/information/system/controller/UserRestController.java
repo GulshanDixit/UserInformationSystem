@@ -40,8 +40,8 @@ public class UserRestController {
         return userService.findByEmail(email);
     }
 
-    @GetMapping(value = "/orderByGpa")
-    public List<User> findAllByOrderByGpaDesc() {
+    @GetMapping(value = "/orderByRating")
+    public List<User> findAllByOrderByRatingDesc() {
         return userService.findAllByOrderByRatingDesc();
     }
 

@@ -1,5 +1,6 @@
 package com.user.information.system.model;
 
+import com.user.information.system.pojos.Course;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,12 +15,12 @@ public class User {
     private long userNumber;
     private String email;
     private float rating;
-    private List<String> courseList;
+    private List<Course> courseList;
 
     public User() {
     }
 
-    public User(String name, long userNumber, String email, float rating, List<String> courseList) {
+    public User(String name, long userNumber, String email, float rating, List<Course> courseList) {
         this.name = name;
         this.userNumber = userNumber;
         this.email = email;
@@ -67,11 +68,11 @@ public class User {
         this.rating = rating;
     }
 
-    public List<String> getCourseList() {
+    public List<Course> getCourseList() {
         return courseList;
     }
 
-    public void setCourseList(List<String> courseList) {
+    public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
     }
 
@@ -83,7 +84,7 @@ public class User {
                 ", userNumber=" + userNumber +
                 ", email='" + email + '\'' +
                 ", rating=" + rating +
-                ", courseList=" + courseList +
+                ", courseList=" + courseList.toString() +
                 '}';
     }
 }

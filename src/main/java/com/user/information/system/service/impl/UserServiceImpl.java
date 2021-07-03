@@ -40,7 +40,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void saveAllUsers(List<User> users)
+    {
+        repository.saveAll(users);
+    }
+
+    @Override
     public void deleteUserById(String id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAllUsers()
+    {
+        repository.deleteAll();
     }
 }

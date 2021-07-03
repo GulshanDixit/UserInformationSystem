@@ -16,5 +16,9 @@ public interface UserService {
 
     void saveOrUpdateUser(User user);
 
+    void saveAllUsers(List<User> users);
+
     void deleteUserById(String id);
+
+    void deleteAllUsers();
 }

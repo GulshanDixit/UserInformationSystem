@@ -1,6 +1,7 @@
 package com.user.information.system.service.impl;
 
 import com.user.information.system.model.User;
+import com.user.information.system.pojos.Course;
 import com.user.information.system.repository.UserRepository;
 import com.user.information.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,37 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAllByOrderByRatingDesc() {
         return repository.findAllByOrderByRatingDesc();
+    }
+
+    @Override
+    public void updateUserCourseName(long userNumber, String oldName,  String newName) {
+        User user = repository.findByUserNumber(userNumber);
+        List<Course> courseList = user.getCourseList();
+        courseList.forEach(course -> {
+                    if (course.getName().equals(oldName)) {
+                        course.setName(newName);
+                    }
+                });
+        user.setCourseList(courseList);
+        repository.save(user);
+    }
+
+    @Override
+    public void updateUserCourseDescription(long userNumber, String courseName, String courseDescription) {
+        User user = repository.findByUserNumber(userNumber);
+        List<Course> courseList = user.getCourseList();
+
+        // replace the '_' with ' ' from courseName and courseDescription
+        final String courseName_ = courseName.replace('_',' ');
+        final String courseDescription_ = courseDescription.replace('_',' ');
+
+        courseList.forEach(course -> {
+                    if(course.getName().equals(courseName_)) {
+                        course.setDescription(courseDescription_);
+                    }
+                });
+        user.setCourseList(courseList);
+        repository.save(user);
     }
 
     @Override

@@ -14,6 +14,10 @@ public interface UserService {
 
     List<User> findAllByOrderByRatingDesc();
 
+    void updateUserCourseName(long userNumber, String oldName, String newName);
+
+    void updateUserCourseDescription(long userNumber, String courseName, String courseDescription);
+
     void saveOrUpdateUser(User user);
 
     void saveAllUsers(List<User> users);

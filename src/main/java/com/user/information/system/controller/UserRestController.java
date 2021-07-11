@@ -60,6 +60,20 @@ public class UserRestController {
         return new ResponseEntity("User added successfully", HttpStatus.OK);
     }
 
+    @PostMapping(value = "/updateCourseName/{userNumber}/{oldCourseName}/{newCourseName}")
+    public ResponseEntity<?> updateCourseName(@PathVariable long userNumber, @PathVariable String oldCourseName, @PathVariable String newCourseName)
+    {
+        userService.updateUserCourseName(userNumber, oldCourseName, newCourseName);
+        return new ResponseEntity("Updated course name to: " + newCourseName, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/updateCourseDescription/{userNumber}/{courseName}/{courseDescription}")
+    public ResponseEntity<?> updateCourseDescription(@PathVariable long userNumber, @PathVariable String courseName, @PathVariable String courseDescription)
+    {
+        userService.updateUserCourseDescription(userNumber, courseName, courseDescription);
+        return new ResponseEntity("Updated course description to: " + courseDescription, HttpStatus.OK);
+    }
+
     @DeleteMapping(value = "/delete/{userNumber}")
     public ResponseEntity<?> deleteUserByUserNumber(@PathVariable long userNumber) {
         userService.deleteUserById(userService.findByUserNumber(userNumber).getId());
